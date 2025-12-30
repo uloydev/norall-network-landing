@@ -1,0 +1,27 @@
+{
+  "name": "@noral/monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Noral Landing Page - Production-ready monorepo with Strapi CMS and SvelteKit",
+  "engines": {
+    "node": ">=20.11.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter \"./apps/**\" dev",
+    "dev:web": "pnpm --filter @noral/web dev",
+    "dev:cms": "pnpm --filter @noral/cms dev",
+    "build": "pnpm -r build",
+    "build:web": "pnpm --filter @noral/web build",
+    "build:cms": "pnpm --filter @noral/cms build",
+    "lint": "pnpm -r lint",
+    "format": "prettier --write \"**/*.{js,ts,json,svelte,md}\"",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.1",
+    "prettier-plugin-svelte": "^3.1.2",
+    "typescript": "^5.3.3"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
