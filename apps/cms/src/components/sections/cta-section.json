@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_cta_sections",
+  "info": {
+    "displayName": "CTA Section",
+    "description": "Call-to-action section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.button",
+      "required": true
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary", "dark", "light"],
+      "default": "primary"
+    }
+  }
+}
