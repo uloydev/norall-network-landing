@@ -57,3 +57,18 @@ setup: ## Initial setup (create .env if missing)
 	else \
 		echo "✅ .env already exists"; \
 	fi
+
+reset-seed: ## Reset database and seed with default data (use: make reset-seed OPTION=1 or 2)
+	@chmod +x scripts/reset-and-seed.sh
+	@./scripts/reset-and-seed.sh $(OPTION)
+
+reset-db: ## Quick database reset (requires PostgreSQL access)
+	@chmod +x scripts/seed-db.sh
+	@./scripts/seed-db.sh
+
+seed: ## Seed database with default data (without reset)
+	@echo "🌱 Seeding will run automatically when you start Strapi..."
+	@echo "Run: make dev-cms"
+	@echo ""
+	@echo "Note: If data already exists, seeding will be skipped."
+	@echo "To reset and reseed, use: make reset-seed"
