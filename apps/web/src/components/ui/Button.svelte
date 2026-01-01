@@ -4,6 +4,7 @@
 
   export let button: ButtonType;
   export let size: 'sm' | 'md' | 'lg' = 'md';
+  export let additionalClasses: string = '';
 
   const variantClasses = {
     primary: 'btn-primary',
@@ -20,7 +21,8 @@
   const classes = clsx(
     'btn',
     variantClasses[button.variant],
-    sizeClasses[size]
+    sizeClasses[size],
+    additionalClasses
   );
 </script>
 
