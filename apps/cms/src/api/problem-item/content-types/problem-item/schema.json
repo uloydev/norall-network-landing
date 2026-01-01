@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "problem_items",
+  "info": {
+    "singularName": "problem-item",
+    "pluralName": "problem-items",
+    "displayName": "Problem Item",
+    "description": "Problems or challenges that the solution addresses"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": "Used in problem/challenge sections with checkmarks"
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Problem title (e.g., 'Technology Dependence')"
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Detailed explanation of the problem"
+    },
+    "icon": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Icon name or identifier (e.g., 'check', 'alert', 'info'). Optional."
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 999,
+      "description": "Display order (lower numbers appear first)"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "process_steps",
+  "info": {
+    "singularName": "process-step",
+    "pluralName": "process-steps",
+    "displayName": "Process Step",
+    "description": "Steps in the technology transfer process (Identify, Refine, EU-Ready, Scale)"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": "Process steps shown in horizontal bar on landing page"
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 2,
+      "maxLength": 50,
+      "description": "Step name (e.g., 'Identify', 'Refine', 'EU-Ready', 'Scale')"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 300,
+      "description": "Optional detailed description of this step"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 10,
+      "required": true,
+      "description": "Display order (1, 2, 3, 4...)"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": ["light", "medium", "dark", "primary"],
+      "default": "light",
+      "description": "Background color variation for the step"
+    }
+  }
+}

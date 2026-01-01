@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/process-steps",
+      "handler": "process-step.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/process-steps/:id",
+      "handler": "process-step.findOne",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

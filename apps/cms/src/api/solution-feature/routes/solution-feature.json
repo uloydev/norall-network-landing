@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/solution-features",
+      "handler": "solution-feature.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/solution-features/:id",
+      "handler": "solution-feature.findOne",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

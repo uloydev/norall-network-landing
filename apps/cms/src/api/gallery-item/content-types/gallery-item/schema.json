@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gallery_items",
+  "info": {
+    "singularName": "gallery-item",
+    "pluralName": "gallery-items",
+    "displayName": "Gallery Item",
+    "description": "Gallery images with titles and descriptions"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": "Items displayed in the gallery grid"
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 150,
+      "description": "Gallery item title"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 500,
+      "description": "Optional description or caption"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"],
+      "description": "Gallery image. Recommended: 800x600px minimum."
+    },
+    "cardStyle": {
+      "type": "enumeration",
+      "enum": ["image", "text-overlay", "colored-background"],
+      "default": "image",
+      "description": "How to display the card: full image, text overlay, or colored background"
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": ["none", "primary", "secondary", "accent", "light", "dark"],
+      "default": "none",
+      "description": "Background color (if cardStyle is colored-background)"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0,
+      "min": 0,
+      "max": 999,
+      "description": "Display order in gallery grid"
+    }
+  }
+}

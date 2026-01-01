@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/gallery-items",
+      "handler": "gallery-item.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/gallery-items/:id",
+      "handler": "gallery-item.findOne",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
