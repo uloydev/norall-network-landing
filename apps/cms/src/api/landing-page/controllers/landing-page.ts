@@ -6,18 +6,25 @@ export default factories.createCoreController('api::landing-page.landing-page', 
       populate: {
         hero: {
           populate: {
+            tags: true,
+            featureCards: true,
             primaryCta: true,
             secondaryCta: true,
-            image: true,
+            backgroundImage: true,
           },
         },
         sections: {
           populate: {
-            features: true,
+            processSteps: true,
+            problems: true,
+            solutionFeatures: true,
+            galleryItems: true,
+            image: true,
             testimonials: {
               populate: ['avatar'],
             },
-            button: true,
+            primaryCta: true,
+            secondaryCta: true,
           },
         },
         seo: {

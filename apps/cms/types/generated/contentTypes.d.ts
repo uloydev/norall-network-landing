@@ -664,16 +664,39 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
     singularName: 'feature';
     pluralName: 'features';
     displayName: 'Feature';
-    description: 'Product or service features';
+    description: 'Product or service features displayed on the landing page';
   };
   options: {
     draftAndPublish: true;
+    comment: 'Features can be referenced in Features Section components';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
-    icon: Attribute.String;
-    order: Attribute.Integer & Attribute.DefaultTo<0>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+        maxLength: 100;
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 500;
+      }>;
+    icon: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 999;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    isHighlighted: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -684,23 +707,89 @@ export interface ApiFeatureFeature extends Schema.CollectionType {
   };
 }
 
+export interface ApiGalleryItemGalleryItem extends Schema.CollectionType {
+  collectionName: 'gallery_items';
+  info: {
+    singularName: 'gallery-item';
+    pluralName: 'gallery-items';
+    displayName: 'Gallery Item';
+    description: 'Gallery images with titles and descriptions';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: 'Items displayed in the gallery grid';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 3;
+        maxLength: 150;
+      }>;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 500;
+      }>;
+    image: Attribute.Media<'images'> & Attribute.Required;
+    cardStyle: Attribute.Enumeration<['image', 'text-overlay', 'colored-background']> &
+      Attribute.DefaultTo<'image'>;
+    backgroundColor: Attribute.Enumeration<
+      ['none', 'primary', 'secondary', 'accent', 'light', 'dark']
+    > &
+      Attribute.DefaultTo<'none'>;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 999;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::gallery-item.gallery-item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::gallery-item.gallery-item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandingPageLandingPage extends Schema.SingleType {
   collectionName: 'landing_pages';
   info: {
     singularName: 'landing-page';
     pluralName: 'landing-pages';
     displayName: 'Landing Page';
-    description: 'Main landing page content';
+    description: 'Main landing page content with hero, dynamic sections, and SEO';
   };
   options: {
     draftAndPublish: true;
+    comment: 'Enable draft/publish workflow for content review before going live';
   };
   attributes: {
     hero: Attribute.Component<'sections.hero'> & Attribute.Required;
     sections: Attribute.DynamicZone<
-      ['sections.features-section', 'sections.testimonials-section', 'sections.cta-section']
-    >;
-    seo: Attribute.Component<'shared.seo'>;
+      [
+        'sections.process-steps-section',
+        'sections.problem-section',
+        'sections.solution-grid-section',
+        'sections.features-section',
+        'sections.testimonials-section',
+        'sections.gallery-section',
+        'sections.contact-form-section',
+        'sections.cta-section'
+      ]
+    > &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 15;
+        },
+        number
+      >;
+    seo: Attribute.Component<'shared.seo'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -711,24 +800,193 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
   };
 }
 
+export interface ApiProblemItemProblemItem extends Schema.CollectionType {
+  collectionName: 'problem_items';
+  info: {
+    singularName: 'problem-item';
+    pluralName: 'problem-items';
+    displayName: 'Problem Item';
+    description: 'Problems or challenges that the solution addresses';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: 'Used in problem/challenge sections with checkmarks';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 100;
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 500;
+      }>;
+    icon: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 999;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::problem-item.problem-item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::problem-item.problem-item', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProcessStepProcessStep extends Schema.CollectionType {
+  collectionName: 'process_steps';
+  info: {
+    singularName: 'process-step';
+    pluralName: 'process-steps';
+    displayName: 'Process Step';
+    description: 'Steps in the technology transfer process (Identify, Refine, EU-Ready, Scale)';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: 'Process steps shown in horizontal bar on landing page';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+        maxLength: 50;
+      }>;
+    description: Attribute.Text &
+      Attribute.SetMinMaxLength<{
+        maxLength: 300;
+      }>;
+    order: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 10;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    color: Attribute.Enumeration<['light', 'medium', 'dark', 'primary']> &
+      Attribute.DefaultTo<'light'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::process-step.process-step', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::process-step.process-step', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSolutionFeatureSolutionFeature extends Schema.CollectionType {
+  collectionName: 'solution_features';
+  info: {
+    singularName: 'solution-feature';
+    pluralName: 'solution-features';
+    displayName: 'Solution Feature';
+    description: 'Key features or benefits of the solution';
+  };
+  options: {
+    draftAndPublish: true;
+    comment: 'Solution features displayed in grid layout';
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 5;
+        maxLength: 150;
+      }>;
+    description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 500;
+      }>;
+    icon: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    backgroundColor: Attribute.Enumeration<['white', 'light', 'primary', 'secondary', 'accent']> &
+      Attribute.DefaultTo<'white'>;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 999;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::solution-feature.solution-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::solution-feature.solution-feature',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTestimonialTestimonial extends Schema.CollectionType {
   collectionName: 'testimonials';
   info: {
     singularName: 'testimonial';
     pluralName: 'testimonials';
     displayName: 'Testimonial';
-    description: 'Customer testimonials';
+    description: 'Customer testimonials and reviews for social proof';
   };
   options: {
     draftAndPublish: true;
+    comment: 'Testimonials can be referenced in Testimonials Section components';
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    role: Attribute.String;
-    company: Attribute.String;
-    content: Attribute.Text & Attribute.Required;
+    name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 2;
+        maxLength: 100;
+      }>;
+    role: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    company: Attribute.String &
+      Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    content: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        minLength: 20;
+        maxLength: 1000;
+      }>;
     avatar: Attribute.Media<'images'>;
     rating: Attribute.Integer &
+      Attribute.Required &
       Attribute.SetMinMax<
         {
           min: 1;
@@ -737,7 +995,16 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
         number
       > &
       Attribute.DefaultTo<5>;
-    order: Attribute.Integer & Attribute.DefaultTo<0>;
+    order: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 999;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    isFeatured: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -767,7 +1034,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::feature.feature': ApiFeatureFeature;
+      'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
+      'api::problem-item.problem-item': ApiProblemItemProblemItem;
+      'api::process-step.process-step': ApiProcessStepProcessStep;
+      'api::solution-feature.solution-feature': ApiSolutionFeatureSolutionFeature;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
