@@ -2,26 +2,44 @@
   "collectionName": "components_shared_buttons",
   "info": {
     "displayName": "Button",
-    "description": "Button component"
+    "description": "Reusable button/link component for CTAs",
+    "icon": "cursor"
   },
   "options": {},
   "attributes": {
     "text": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "Button text/label (e.g., 'Get Started', 'Learn More'). Keep concise."
     },
     "url": {
       "type": "string",
-      "required": true
+      "required": true,
+      "description": "Link destination (e.g., '/signup', 'https://example.com', '#contact')"
     },
     "variant": {
       "type": "enumeration",
-      "enum": ["primary", "secondary", "outline"],
-      "default": "primary"
+      "enum": ["primary", "secondary", "outline", "ghost"],
+      "default": "primary",
+      "description": "Button style - primary (solid), secondary, outline (border), or ghost (text)"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": ["small", "medium", "large"],
+      "default": "medium",
+      "description": "Button size"
     },
     "openInNewTab": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "description": "Open link in new browser tab (recommended for external links)"
+    },
+    "ariaLabel": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Accessibility label for screen readers. Optional, defaults to button text."
     }
   }
 }

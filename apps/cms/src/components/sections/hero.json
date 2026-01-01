@@ -1,36 +1,72 @@
 {
   "collectionName": "components_sections_heroes",
   "info": {
-    "displayName": "Hero",
-    "description": "Hero section component"
+    "displayName": "Hero Section",
+    "description": "Main hero/banner section with gradient background, tags, and feature cards",
+    "icon": "star"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 10,
+      "maxLength": 200,
+      "description": "Main headline - should be compelling and clear (10-200 characters)"
     },
     "subtitle": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 500,
+      "description": "Supporting text or detailed description (max 500 characters). Optional."
     },
-    "description": {
-      "type": "text"
+    "tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.tag",
+      "description": "Optional tags/badges (e.g., 'Based in Norway', 'Certifying Quality')"
     },
     "primaryCta": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.button"
+      "component": "shared.button",
+      "description": "Main call-to-action button (e.g., 'Explore our Technology'). Optional."
     },
     "secondaryCta": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.button"
+      "component": "shared.button",
+      "description": "Optional secondary action button"
     },
-    "image": {
+    "featureCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.feature-card",
+      "min": 0,
+      "max": 4,
+      "description": "Up to 4 feature cards displayed below the hero text"
+    },
+    "backgroundStyle": {
+      "type": "enumeration",
+      "enum": ["gradient-blue", "gradient-dark", "solid-primary", "solid-dark", "image"],
+      "default": "gradient-blue",
+      "description": "Hero background style"
+    },
+    "backgroundImage": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Optional background image (if backgroundStyle is 'image')"
+    },
+    "videoUrl": {
+      "type": "string",
+      "description": "Optional YouTube or Vimeo video URL"
+    },
+    "textAlignment": {
+      "type": "enumeration",
+      "enum": ["left", "center"],
+      "default": "left",
+      "description": "Text alignment in hero section"
     }
   }
 }

@@ -5,10 +5,11 @@
     "singularName": "landing-page",
     "pluralName": "landing-pages",
     "displayName": "Landing Page",
-    "description": "Main landing page content"
+    "description": "Main landing page content with hero, dynamic sections, and SEO"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "comment": "Enable draft/publish workflow for content review before going live"
   },
   "pluginOptions": {},
   "attributes": {
@@ -16,20 +17,31 @@
       "type": "component",
       "repeatable": false,
       "component": "sections.hero",
-      "required": true
+      "required": true,
+      "description": "Main hero section - first thing visitors see"
     },
     "sections": {
       "type": "dynamiczone",
       "components": [
+        "sections.process-steps-section",
+        "sections.problem-section",
+        "sections.solution-grid-section",
         "sections.features-section",
         "sections.testimonials-section",
+        "sections.gallery-section",
+        "sections.contact-form-section",
         "sections.cta-section"
-      ]
+      ],
+      "description": "Add and reorder sections below the hero. Drag to rearrange the page layout",
+      "min": 1,
+      "max": 15
     },
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.seo"
+      "component": "shared.seo",
+      "required": true,
+      "description": "SEO metadata for search engines and social media sharing"
     }
   }
 }

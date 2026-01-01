@@ -1,32 +1,52 @@
 {
   "collectionName": "components_shared_seos",
   "info": {
-    "displayName": "SEO",
-    "description": "SEO meta information"
+    "displayName": "SEO Metadata",
+    "description": "Search engine optimization and social media sharing metadata",
+    "icon": "search"
   },
   "options": {},
   "attributes": {
     "metaTitle": {
       "type": "string",
       "required": true,
-      "maxLength": 60
+      "minLength": 10,
+      "maxLength": 60,
+      "description": "Page title for search results. Keep under 60 chars for best display."
     },
     "metaDescription": {
       "type": "text",
       "required": true,
-      "maxLength": 160
+      "minLength": 50,
+      "maxLength": 160,
+      "description": "Page description for search results. 50-160 chars recommended."
     },
     "keywords": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 200,
+      "description": "Comma-separated keywords for SEO (e.g., 'landing page, saas, product'). Optional."
     },
     "metaImage": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Social media preview image. Recommended: 1200x630px (Open Graph format)."
     },
     "canonicalURL": {
-      "type": "string"
+      "type": "string",
+      "description": "Canonical URL to prevent duplicate content issues. Usually auto-generated."
+    },
+    "ogType": {
+      "type": "enumeration",
+      "enum": ["website", "article", "product"],
+      "default": "website",
+      "description": "Open Graph type for social media sharing"
+    },
+    "noIndex": {
+      "type": "boolean",
+      "default": false,
+      "description": "Prevent search engines from indexing this page (useful for staging)"
     }
   }
 }
