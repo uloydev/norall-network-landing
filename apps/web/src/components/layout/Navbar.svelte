@@ -1,26 +1,32 @@
 <script lang="ts">
+  import Container from '$components/ui/Container.svelte';
+import logoImg from '$lib/assets/logo.png';
   let mobileMenuOpen = false;
 </script>
 
-<nav class="bg-white shadow-sm sticky top-0 z-50">
-  <div class="container mx-auto px-4">
-    <div class="flex items-center justify-between h-16">
+<nav class="bg-transparent bg-primary-400 shadow-sm fixed top-0 z-50 w-full">
+  <Container maxWidth="tailwind">
+    <div class="flex items-center justify-between h-28">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-2">
-        <span class="text-2xl font-bold text-primary-600">Norall</span>
+      <a href="/" class="flex items-center space-x-3 group overflow-hidden">
+        <img src={logoImg} alt="Norall Logo" class="h-8 w-auto flex-shrink-0" />
+        <span class="text-xl font-medium text-white whitespace-nowrap max-w-0 group-hover:max-w-xs transition-all duration-500 ease-in-out overflow-hidden">Norall Network</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
-        <a href="#about" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-        <a href="#technology" class="text-gray-700 hover:text-primary-600 transition-colors">Technology</a>
-        <a href="#solution" class="text-gray-700 hover:text-primary-600 transition-colors">Solution</a>
-        <a href="#contact" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
+      <div class="hidden md:flex items-center space-x-8 flex-grow justify-center">
+        <a href="#about" class="text-white transition-all hover:font-bold duration-300">About</a>
+        <a href="#technology" class="text-white transition-all hover:font-bold duration-300">Technology</a>
+        <a href="#solution" class="text-white transition-all hover:font-bold duration-300">Solution</a>
+        <a href="#contact" class="text-white transition-all hover:font-bold duration-300">Contact</a>
+      </div>
+      
+      <div class="flex items-center justify-center">
         <a 
           href="#contact" 
-          class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+          class="px-12 py-2 border border-white bg-white text-black rounded-full hover:bg-primary-900 hover:text-white transition-all duration-500 text-sm"
         >
-          Get Started
+          Contact Us
         </a>
       </div>
 
@@ -42,20 +48,20 @@
 
     <!-- Mobile Menu -->
     {#if mobileMenuOpen}
-      <div class="md:hidden py-4 border-t">
+      <div class="md:hidden py-4 border-t border-white/20">
         <div class="flex flex-col space-y-4">
-          <a href="#about" class="text-gray-700 hover:text-primary-600 transition-colors">About</a>
-          <a href="#technology" class="text-gray-700 hover:text-primary-600 transition-colors">Technology</a>
-          <a href="#solution" class="text-gray-700 hover:text-primary-600 transition-colors">Solution</a>
-          <a href="#contact" class="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
+          <a href="#about" class="text-white transition-all hover:font-bold duration-300">About</a>
+          <a href="#technology" class="text-white transition-all hover:font-bold duration-300">Technology</a>
+          <a href="#solution" class="text-white transition-all hover:font-bold duration-300">Solution</a>
+          <a href="#contact" class="text-white transition-all hover:font-bold duration-300">Contact</a>
           <a 
             href="#contact" 
-            class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors text-center"
+            class="px-12 py-2 border border-white bg-white text-black rounded-full hover:bg-primary-900 hover:text-white transition-all duration-500 text-sm text-center"
           >
-            Get Started
+            Contact Us
           </a>
         </div>
       </div>
     {/if}
-  </div>
+  </Container>
 </nav>
