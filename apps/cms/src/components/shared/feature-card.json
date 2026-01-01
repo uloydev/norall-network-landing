@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_feature_cards",
+  "info": {
+    "displayName": "Feature Card",
+    "description": "Small feature card with icon, title, and description (for hero section)",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Feature card title"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 300,
+      "description": "Short description (optional)"
+    },
+    "icon": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Icon name or identifier"
+    }
+  }
+}

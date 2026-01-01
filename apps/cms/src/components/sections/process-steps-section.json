@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_sections_process_steps",
+  "info": {
+    "displayName": "Process Steps Section",
+    "description": "Horizontal bar showing process steps (Identify → Refine → EU-Ready → Scale)",
+    "icon": "layer"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Section heading (e.g., 'Rethinking Technology Transfer')"
+    },
+    "description": {
+      "type": "text",
+      "maxLength": 1000,
+      "description": "Section description or introduction text"
+    },
+    "processSteps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::process-step.process-step",
+      "description": "Select process steps. They will be ordered by their 'order' field."
+    },
+    "videoUrl": {
+      "type": "string",
+      "description": "Optional video URL or embed code"
+    },
+    "videoPlaceholder": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "description": "Video thumbnail/placeholder image"
+    }
+  }
+}

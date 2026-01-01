@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_sections_solution_grids",
+  "info": {
+    "displayName": "Solution Grid Section",
+    "description": "Grid layout showcasing solution features with icons and descriptions",
+    "icon": "grid"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Section heading (e.g., 'Our Solution')"
+    },
+    "subtitle": {
+      "type": "text",
+      "maxLength": 500,
+      "description": "Optional supporting text"
+    },
+    "solutionFeatures": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solution-feature.solution-feature",
+      "description": "Select solution features. They will be ordered by their 'order' field."
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["grid-2", "grid-3", "grid-4"],
+      "default": "grid-3",
+      "description": "Number of columns in the grid (2, 3, or 4)"
+    },
+    "cardStyle": {
+      "type": "enumeration",
+      "enum": ["elevated", "flat", "bordered"],
+      "default": "elevated",
+      "description": "Visual style of feature cards"
+    }
+  }
+}

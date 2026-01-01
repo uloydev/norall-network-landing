@@ -1,0 +1,66 @@
+{
+  "collectionName": "components_sections_contact_forms",
+  "info": {
+    "displayName": "Contact Form Section",
+    "description": "Contact form with customizable fields",
+    "icon": "envelop"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 5,
+      "maxLength": 150,
+      "description": "Section heading (e.g., 'What can we help you with?')"
+    },
+    "subtitle": {
+      "type": "text",
+      "maxLength": 500,
+      "description": "Optional supporting text below the title"
+    },
+    "submitButtonText": {
+      "type": "string",
+      "default": "Get Started",
+      "maxLength": 50,
+      "description": "Text for the submit button"
+    },
+    "successMessage": {
+      "type": "text",
+      "default": "Thank you for your message. We'll get back to you soon!",
+      "maxLength": 200,
+      "description": "Message shown after successful form submission"
+    },
+    "showNameField": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show full name field"
+    },
+    "showEmailField": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show email field"
+    },
+    "showPhoneField": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show telephone/phone field"
+    },
+    "showServiceField": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show service selection field"
+    },
+    "showMessageField": {
+      "type": "boolean",
+      "default": true,
+      "description": "Show message textarea"
+    },
+    "backgroundColor": {
+      "type": "enumeration",
+      "enum": ["white", "light", "background"],
+      "default": "background",
+      "description": "Section background color"
+    }
+  }
+}

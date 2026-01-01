@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_sections_problems",
+  "info": {
+    "displayName": "Problem Section",
+    "description": "Section highlighting problems or challenges (e.g., 'Why Norway Needs a Clean Alternative')",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Section heading"
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "minLength": 10,
+      "maxLength": 1000,
+      "description": "Introduction text explaining the problem"
+    },
+    "problems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::problem-item.problem-item",
+      "description": "Select problem items. They will be ordered by their 'order' field."
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"],
+      "description": "Optional image displayed alongside the problems"
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": ["left", "right"],
+      "default": "right",
+      "description": "Position of the image relative to the text"
+    }
+  }
+}

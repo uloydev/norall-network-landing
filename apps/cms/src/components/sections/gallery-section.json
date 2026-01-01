@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_sections_galleries",
+  "info": {
+    "displayName": "Gallery Section",
+    "description": "Image gallery grid with titles and descriptions",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Section heading (e.g., 'Norall Gallery')"
+    },
+    "subtitle": {
+      "type": "text",
+      "maxLength": 500,
+      "description": "Optional supporting text"
+    },
+    "galleryItems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::gallery-item.gallery-item",
+      "description": "Select gallery items. They will be ordered by their 'order' field."
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["grid-2", "grid-3", "grid-4", "masonry"],
+      "default": "grid-3",
+      "description": "Gallery layout style"
+    }
+  }
+}
