@@ -2,27 +2,41 @@
   "collectionName": "components_sections_cta_sections",
   "info": {
     "displayName": "CTA Section",
-    "description": "Call-to-action section"
+    "description": "Call-to-action section to drive conversions (signup, contact, etc.)",
+    "icon": "cursor"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 5,
+      "maxLength": 150,
+      "description": "Compelling call-to-action headline (e.g., 'Ready to Get Started?')"
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 300,
+      "description": "Supporting text to encourage action (max 300 characters). Optional."
     },
     "button": {
       "type": "component",
       "repeatable": false,
       "component": "shared.button",
-      "required": true
+      "required": true,
+      "description": "Primary action button (e.g., 'Sign Up Now', 'Get Started Free')"
     },
     "backgroundColor": {
       "type": "enumeration",
-      "enum": ["primary", "secondary", "dark", "light"],
-      "default": "primary"
+      "enum": ["primary", "secondary", "dark", "light", "gradient"],
+      "default": "primary",
+      "description": "Background color theme for the CTA section"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": ["compact", "medium", "large"],
+      "default": "medium",
+      "description": "Section size and padding"
     }
   }
 }

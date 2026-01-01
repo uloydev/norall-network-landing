@@ -5,42 +5,64 @@
     "singularName": "testimonial",
     "pluralName": "testimonials",
     "displayName": "Testimonial",
-    "description": "Customer testimonials"
+    "description": "Customer testimonials and reviews for social proof"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "comment": "Testimonials can be referenced in Testimonials Section components"
   },
   "pluginOptions": {},
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 2,
+      "maxLength": 100,
+      "description": "Customer's full name (2-100 characters)"
     },
     "role": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 100,
+      "description": "Job title or role (e.g., 'CEO', 'Product Manager'). Optional."
     },
     "company": {
-      "type": "string"
+      "type": "string",
+      "maxLength": 100,
+      "description": "Company or organization name. Optional."
     },
     "content": {
       "type": "text",
-      "required": true
+      "required": true,
+      "minLength": 20,
+      "maxLength": 1000,
+      "description": "Testimonial text - what the customer said (20-1000 characters)"
     },
     "avatar": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images"],
+      "description": "Customer profile photo. Recommended: 200x200px minimum, square format."
     },
     "rating": {
       "type": "integer",
       "min": 1,
       "max": 5,
-      "default": 5
+      "default": 5,
+      "required": true,
+      "description": "Star rating (1-5 stars, where 5 is best)"
     },
     "order": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "min": 0,
+      "max": 999,
+      "description": "Display order (lower numbers appear first, 0-999)"
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": false,
+      "description": "Mark as featured to display prominently"
     }
   }
 }

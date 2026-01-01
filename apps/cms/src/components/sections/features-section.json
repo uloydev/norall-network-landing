@@ -2,21 +2,34 @@
   "collectionName": "components_sections_features_sections",
   "info": {
     "displayName": "Features Section",
-    "description": "Section displaying features"
+    "description": "Showcase product/service features with icons and descriptions",
+    "icon": "grid"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Section heading (e.g., 'Key Features', 'What We Offer')"
     },
     "subtitle": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 300,
+      "description": "Optional supporting text to describe the features section"
     },
     "features": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::feature.feature"
+      "target": "api::feature.feature",
+      "description": "Select features to display. They will be ordered by their 'order' field."
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["grid-2", "grid-3", "grid-4", "list"],
+      "default": "grid-3",
+      "description": "How to display features: 2/3/4 column grid or vertical list"
     }
   }
 }

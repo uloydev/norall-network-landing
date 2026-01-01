@@ -2,21 +2,39 @@
   "collectionName": "components_sections_testimonials_sections",
   "info": {
     "displayName": "Testimonials Section",
-    "description": "Section displaying testimonials"
+    "description": "Display customer testimonials and reviews for social proof",
+    "icon": "quote"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Section heading (e.g., 'What Our Customers Say', 'Reviews')"
     },
     "subtitle": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 300,
+      "description": "Optional supporting text for the testimonials section"
     },
     "testimonials": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::testimonial.testimonial"
+      "target": "api::testimonial.testimonial",
+      "description": "Select testimonials to display. They will be ordered by their 'order' field."
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": ["carousel", "grid-2", "grid-3"],
+      "default": "carousel",
+      "description": "Display style: sliding carousel or 2/3 column grid"
+    },
+    "showRatings": {
+      "type": "boolean",
+      "default": true,
+      "description": "Display star ratings with testimonials"
     }
   }
 }
