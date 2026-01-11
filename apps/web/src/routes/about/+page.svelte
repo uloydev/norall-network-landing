@@ -1,6 +1,7 @@
 <script lang="ts">
   import ScrollReveal from '$components/ui/ScrollReveal.svelte';
   import { aboutPageData } from '$lib/data/about-content';
+  import logoImg from '$lib/assets/logo.png';
   
   const { seo, hero, process, globalToLocal, mission } = aboutPageData;
 </script>
@@ -60,19 +61,8 @@
         </ScrollReveal>
         
         <ScrollReveal animation="fade-left" duration="1000" delay="200">
-          <div class="bg-white/5 backdrop-blur-sm border border-white/10 p-8 rounded-2xl relative">
-            <!-- Decorative Quote Mark -->
-            <div class="absolute -top-6 -left-2 text-6xl text-blue-500 opacity-50 font-serif">"</div>
-            <p class="text-lg text-gray-300 leading-relaxed italic relative z-10">
-              {hero.quote.text}
-            </p>
-            <div class="mt-8 flex items-center gap-4">
-              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center font-bold text-xl shadow-lg shadow-blue-500/20">{hero.quote.author.avatar}</div>
-              <div>
-                <div class="font-bold text-white text-lg">{hero.quote.author.name}</div>
-                <div class="text-sm text-blue-300">{hero.quote.author.location}</div>
-              </div>
-            </div>
+          <div class="flex items-center justify-center p-12 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+            <img src={logoImg} alt="Norall Network Logo" class="w-full max-w-md h-auto" />
           </div>
         </ScrollReveal>
       </div>
