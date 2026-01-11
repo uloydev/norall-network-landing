@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { page } from '$app/stores';
   import Container from '$components/ui/Container.svelte';
   import logoImg from '$lib/assets/logo.png';
   
@@ -22,6 +23,10 @@
       window.removeEventListener('scroll', handleScroll);
     };
   });
+  
+  $: isActive = (path: string): boolean => {
+    return $page.url.pathname === path;
+  };
 </script>
 
 <nav class="fixed top-0 z-50 w-full transition-all duration-500 {scrolled ? 'bg-secondary-500 shadow-lg' : 'bg-transparent'}">
@@ -35,9 +40,18 @@
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8 flex-grow justify-center">
-        <a href="/" class="text-white transition-all hover:font-bold duration-300">Home</a>
-        <a href="/about" class="text-white transition-all hover:font-bold duration-300">About Us</a>
-        <a href="/services" class="text-white transition-all hover:font-bold duration-300">Our Services</a>
+        <a href="/" class="relative text-white transition-all hover:font-bold duration-300">
+          <span class="relative z-10 {isActive('/') ? 'font-bold' : ''}">Home</span>
+          <span class="absolute bottom-[-8px] left-0 h-0.5 bg-white transition-all duration-500 ease-out {isActive('/') ? 'w-full opacity-100' : 'w-0 opacity-0'}"></span>
+        </a>
+        <a href="/about" class="relative text-white transition-all hover:font-bold duration-300">
+          <span class="relative z-10 {isActive('/about') ? 'font-bold' : ''}">About Us</span>
+          <span class="absolute bottom-[-8px] left-0 h-0.5 bg-white transition-all duration-500 ease-out {isActive('/about') ? 'w-full opacity-100' : 'w-0 opacity-0'}"></span>
+        </a>
+        <a href="/services" class="relative text-white transition-all hover:font-bold duration-300">
+          <span class="relative z-10 {isActive('/services') ? 'font-bold' : ''}">Our Services</span>
+          <span class="absolute bottom-[-8px] left-0 h-0.5 bg-white transition-all duration-500 ease-out {isActive('/services') ? 'w-full opacity-100' : 'w-0 opacity-0'}"></span>
+        </a>
       </div>
       
       <div class="flex items-center justify-center">
