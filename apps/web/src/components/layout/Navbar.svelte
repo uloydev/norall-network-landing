@@ -1,24 +1,43 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
   import Container from '$components/ui/Container.svelte';
-import logoImg from '$lib/assets/logo.png';
+  import logoImg from '$lib/assets/logo.png';
+  
   let mobileMenuOpen = false;
+  let scrolled = false;
+
+  onMount(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('section');
+      if (heroSection) {
+        const heroBottom = heroSection.offsetHeight;
+        scrolled = window.scrollY > heroBottom - 112; // 112 = h-28 (navbar height)
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  });
 </script>
 
-<nav class="bg-transparent bg-primary-400 shadow-sm fixed top-0 z-50 w-full">
+<nav class="fixed top-0 z-50 w-full transition-all duration-500 {scrolled ? 'bg-secondary-500 shadow-lg' : 'bg-transparent'}">
   <Container maxWidth="tailwind">
-    <div class="flex items-center justify-between h-28">
+    <div class="flex items-center justify-between h-24">
       <!-- Logo -->
       <a href="/" class="flex items-center space-x-3 group overflow-hidden">
         <img src={logoImg} alt="Norall Logo" class="h-8 w-auto flex-shrink-0" />
-        <span class="text-xl font-medium text-white whitespace-nowrap max-w-0 group-hover:max-w-xs transition-all duration-500 ease-in-out overflow-hidden">Norall Network</span>
+        <span class="text-xl font-medium text-white whitespace-nowrap {scrolled ? 'max-w-xs' : 'max-w-0'} group-hover:max-w-xs transition-all duration-500 ease-in-out overflow-hidden">Norall Network</span>
       </a>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8 flex-grow justify-center">
-        <a href="#about" class="text-white transition-all hover:font-bold duration-300">About</a>
-        <a href="#technology" class="text-white transition-all hover:font-bold duration-300">Technology</a>
-        <a href="#solution" class="text-white transition-all hover:font-bold duration-300">Solution</a>
-        <a href="#contact" class="text-white transition-all hover:font-bold duration-300">Contact</a>
+        <a href="/" class="text-white transition-all hover:font-bold duration-300">Home</a>
+        <a href="/about" class="text-white transition-all hover:font-bold duration-300">About Us</a>
+        <a href="/services" class="text-white transition-all hover:font-bold duration-300">Our Services</a>
       </div>
       
       <div class="flex items-center justify-center">

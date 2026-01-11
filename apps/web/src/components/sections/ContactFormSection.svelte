@@ -1,4 +1,6 @@
 <script lang="ts">
+  import ScrollReveal from '$components/ui/ScrollReveal.svelte';
+  
   export let section: any;
   
   let formData = {
@@ -37,26 +39,27 @@
   }
 </script>
 
-<section class="py-20 {section.backgroundColor === 'white' ? 'bg-white' : section.backgroundColor === 'light' ? 'bg-gray-50' : 'bg-background-500'}">
+<section class="py-20 bg-white">
   <div class="container mx-auto px-4">
-    <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-16 mx-auto items-center">
       <!-- Left Side - Text -->
-      <div class="flex flex-col justify-center">
-        {#if section.title}
-          <h2 class="text-4xl font-bold mb-6">
-            {section.title}
+      <ScrollReveal animation="fade-left" duration="700">
+        <div class="flex flex-col justify-center">
+          <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            What can <span class="text-secondary-600">we help</span> you with?
           </h2>
-        {/if}
         
         {#if section.subtitle}
-          <p class="text-lg text-gray-600">
+          <p class="text-base md:text-lg text-gray-600 leading-relaxed">
             {section.subtitle}
           </p>
         {/if}
       </div>
+      </ScrollReveal>
 
       <!-- Right Side - Form -->
-      <div class="bg-white rounded-2xl shadow-lg p-8">
+      <ScrollReveal animation="fade-right" duration="700" delay="200">
+        <div class="bg-white rounded-3xl shadow-xl p-10 md:p-12">
         {#if isSuccess}
           <div class="text-center py-8">
             <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -69,66 +72,46 @@
             </p>
           </div>
         {:else}
-          <form on:submit={handleSubmit} class="space-y-6">
-            {#if section.showNameField !== false}
-              <div class="grid md:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  bind:value={formData.fullName}
-                  placeholder="Full name"
-                  required
-                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-                />
-                {#if section.showEmailField !== false}
-                  <input
-                    type="email"
-                    bind:value={formData.email}
-                    placeholder="Email"
-                    required
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-                  />
-                {/if}
-              </div>
-            {:else if section.showEmailField !== false}
+          <form on:submit={handleSubmit} class="space-y-8">
+            <div class="grid md:grid-cols-2 gap-8">
+              <input
+                type="text"
+                bind:value={formData.fullName}
+                placeholder="Full name"
+                required
+                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+              />
               <input
                 type="email"
                 bind:value={formData.email}
                 placeholder="Email"
                 required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
+                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
               />
-            {/if}
+            </div>
 
-            {#if section.showPhoneField !== false || section.showServiceField !== false}
-              <div class="grid md:grid-cols-2 gap-4">
-                {#if section.showPhoneField !== false}
-                  <input
-                    type="tel"
-                    bind:value={formData.telephone}
-                    placeholder="Telephone"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-                  />
-                {/if}
-                {#if section.showServiceField !== false}
-                  <input
-                    type="text"
-                    bind:value={formData.service}
-                    placeholder="Service"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none"
-                  />
-                {/if}
-              </div>
-            {/if}
+            <div class="grid md:grid-cols-2 gap-8">
+              <input
+                type="tel"
+                bind:value={formData.telephone}
+                placeholder="Telephone"
+                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+              />
+              <input
+                type="text"
+                bind:value={formData.service}
+                placeholder="Service"
+                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+              />
+            </div>
 
-            {#if section.showMessageField !== false}
-              <textarea
-                bind:value={formData.message}
-                placeholder="Message"
-                rows="4"
-                required
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none resize-none"
-              ></textarea>
-            {/if}
+            <textarea
+              bind:value={formData.message}
+              placeholder="Message"
+              rows="4"
+              required
+              class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400 resize-none"
+            ></textarea>
 
             {#if error}
               <p class="text-red-600 text-sm">{error}</p>
@@ -137,13 +120,14 @@
             <button
               type="submit"
               disabled={isSubmitting}
-              class="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-4 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              class="w-full bg-primary-700 hover:bg-secondary-950 text-white font-semibold py-6 px-8 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
             >
               {isSubmitting ? 'Sending...' : (section.submitButtonText || 'Get Started')}
             </button>
           </form>
         {/if}
       </div>
+      </ScrollReveal>
     </div>
   </div>
 </section>
