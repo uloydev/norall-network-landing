@@ -18,23 +18,27 @@ RUN pnpm install --frozen-lockfile
 WORKDIR /app/apps/web
 RUN pnpm build
 
+# Use pnpm deploy to create a clean production deployment
+WORKDIR /app
+RUN pnpm --filter @noral/web deploy --prod /prod/web
+
+# Copy build output to deployment
+RUN cp -r /app/apps/web/build /prod/web/build
+
 # Production stage
 FROM node:20-alpine
 
-# Install pnpm
-RUN npm install -g pnpm@8.15.0
-
 WORKDIR /app
 
-# Copy package files and lockfile
-COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /app/apps/web/package.json ./package.json
+# Copy the deployed app with all production dependencies
+COPY --from=builder /prod/web ./
 
-# Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile
+ENV NODE_ENV=production
+ENV PORT=3000
 
-# Copy built application
-COPY --from=builder /app/apps/web/build ./build
+EXPOSE 3000
+
+CMD ["node", "build"]
 
 ENV NODE_ENV=production
 ENV PORT=3000

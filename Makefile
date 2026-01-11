@@ -19,7 +19,7 @@ build: ## Build web app
 	pnpm build
 
 docker-up: ## Start Docker containers
-	cd infra && docker-compose up -d
+	cd infra && docker compose up -d
 
 docker-up-service: ## Start a specific Docker service (use: make docker-up-service SERVICE=service-name)
 	@if [ -z "$(SERVICE)" ]; then \
@@ -27,22 +27,22 @@ docker-up-service: ## Start a specific Docker service (use: make docker-up-servi
 		echo "Usage: make docker-up-service SERVICE=service-name"; \
 		exit 1; \
 	fi
-	cd infra && docker-compose up -d $(SERVICE)
+	cd infra && docker compose up -d $(SERVICE)
 
 docker-down: ## Stop Docker containers
-	cd infra && docker-compose down
+	cd infra && docker compose down
 
 docker-logs: ## Show Docker logs
-	cd infra && docker-compose logs -f
+	cd infra && docker compose logs -f
 
 docker-restart: ## Restart Docker containers
-	cd infra && docker-compose restart
+	cd infra && docker compose restart
 
 docker-rebuild: ## Rebuild and start Docker containers
-	cd infra && docker-compose up -d --build
+	cd infra && docker compose up -d --build
 
 docker-clean: ## Stop containers and remove volumes
-	cd infra && docker-compose down -v
+	cd infra && docker compose down -v
 
 clean: ## Clean all build artifacts and dependencies
 	pnpm clean
