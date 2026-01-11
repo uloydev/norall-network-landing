@@ -24,6 +24,14 @@ build: ## Build all apps
 docker-up: ## Start Docker containers
 	cd infra && docker-compose up -d
 
+docker-up-service: ## Start a specific Docker service (use: make docker-up-service SERVICE=service-name)
+	@if [ -z "$(SERVICE)" ]; then \
+		echo "❌ Error: SERVICE parameter is required"; \
+		echo "Usage: make docker-up-service SERVICE=service-name"; \
+		exit 1; \
+	fi
+	cd infra && docker-compose up -d $(SERVICE)
+
 docker-down: ## Stop Docker containers
 	cd infra && docker-compose down
 
