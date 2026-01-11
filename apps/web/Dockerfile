@@ -26,7 +26,8 @@ RUN npm install -g pnpm@8.15.0
 
 WORKDIR /app
 
-# Copy package files
+# Copy package files and lockfile
+COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=builder /app/apps/web/package.json ./package.json
 
 # Install production dependencies only
