@@ -26,10 +26,14 @@ RUN npm install -g pnpm@8.15.0
 
 WORKDIR /app
 
+# Copy package files
+COPY --from=builder /app/apps/web/package.json ./package.json
+
+# Install production dependencies only
+RUN pnpm install --prod --frozen-lockfile
+
 # Copy built application
 COPY --from=builder /app/apps/web/build ./build
-COPY --from=builder /app/apps/web/package.json ./package.json
-COPY --from=builder /app/apps/web/node_modules ./node_modules
 
 ENV NODE_ENV=production
 ENV PORT=3000
