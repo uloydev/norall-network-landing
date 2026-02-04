@@ -21,13 +21,13 @@
           </h2>
         {/if} -->
 
-        <h2 class="text-4xl md:text-6xl font-medium mb-6 leading-tight">
+        <h2 class="text-3xl md:text-4xl lg:text-6xl font-medium mb-6 leading-tight">
             Why Norway Needs a 
-            <p class="font-bold">Clean Alternative</p>
+            <span class="font-bold block">Clean Alternative</span>
           </h2>
         
         {#if section.description}
-          <p class="text-base md:text-lg text-gray-600 mb-12 leading-relaxed">
+          <p class="text-sm md:text-base lg:text-lg text-gray-600 mb-8 md:mb-12 leading-relaxed">
             {section.description}
           </p>
         {/if}
