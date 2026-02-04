@@ -47,25 +47,25 @@
 
     {#if section.solutionFeatures?.data}
       <ScrollRevealStagger itemCount={cards.length} staggerDelay={300} animation="fade-up" let:getItemClass>
-        <div class="grid {gridCols} gap-y-10 gap-x-20 mx-auto">
+        <div class="grid {gridCols} gap-y-10 gap-x-8 md:gap-x-20 mx-auto max-w-6xl">
           {#each sortedCards as feature, index}
             <div 
-              class="bg-white px-10 py-12 pl-16 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 relative {getItemClass(index)}"
+              class="bg-white px-6 md:px-10 py-8 md:py-12 pl-24 md:pl-16 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 relative {getItemClass(index)}"
             >
               {#if feature.attributes.icon}
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-20 h-20 rounded-2xl bg-black text-white flex items-center justify-center shadow-lg">
-                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="absolute left-4 md:left-0 top-8 md:top-1/2 md:-translate-y-1/2 md:-translate-x-1/2 w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-black text-white flex items-center justify-center shadow-lg">
+                  <svg class="w-6 h-6 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     {@html getIcon(feature.attributes.icon)}
                   </svg>
                 </div>
               {/if}
               
               <div class="flex-1">
-                <h3 class="text-xl md:text-2xl font-bold mb-3 text-gray-900">
+                <h3 class="text-lg md:text-xl lg:text-2xl font-bold mb-3 text-gray-900">
                   {feature.attributes.title}
                 </h3>
                 
-                <p class="text-gray-600 leading-relaxed">
+                <p class="text-sm md:text-base text-gray-600 leading-relaxed">
                   {feature.attributes.description}
                 </p>
               </div>

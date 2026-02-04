@@ -6,7 +6,7 @@
   export let section: CTASection;
 
   const bgClasses = {
-    primary: 'bg-primary-600',
+    primary: 'bg-primary-500',
     secondary: 'bg-secondary-800',
     dark: 'bg-secondary-900',
     light: 'bg-secondary-50',

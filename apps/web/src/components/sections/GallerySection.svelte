@@ -8,7 +8,7 @@
   $: sortedCards = cards.slice().sort((a: any, b: any) => a.attributes.order - b.attributes.order);
 </script>
 
-<section class="py-20 bg-gray-50">
+<section class="py-20 bg-background-300">
   <div class="container mx-auto px-4">
     <ScrollReveal animation="fade-up" duration="700">
       <h2 class="text-5xl md:text-6xl font-bold text-center mb-6">
@@ -73,9 +73,9 @@
                   {item.attributes.backgroundColor === 'primary' ? 'bg-primary-500 text-white' : ''}
                   {item.attributes.backgroundColor === 'secondary' ? 'bg-secondary-500 text-white' : ''}
                   {item.attributes.backgroundColor === 'accent' ? 'bg-accent-500 text-white' : ''}
-                  {item.attributes.backgroundColor === 'light' ? 'bg-blue-100 text-gray-900' : ''}
-                  {item.attributes.backgroundColor === 'dark' ? 'bg-gray-900 text-white' : ''}
-                  {item.attributes.backgroundColor === 'blue' ? 'bg-blue-600 text-white' : ''}
+                  {item.attributes.backgroundColor === 'light' ? 'bg-background-200 text-gray-900' : ''}
+                  {item.attributes.backgroundColor === 'dark' ? 'bg-primary-500 text-white' : ''}
+                  {item.attributes.backgroundColor === 'blue' ? 'bg-primary-500 text-white' : ''}
                   {item.attributes.backgroundColor === 'black' ? 'bg-black text-white' : ''}
                 "
               >

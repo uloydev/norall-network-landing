@@ -112,7 +112,7 @@
           <button
             type="submit"
             disabled={isSubmitting || isSuccess}
-            class="absolute right-0 top-0 bottom-0 px-8 py-6 bg-secondary-600 hover:bg-secondary-700 text-white font-semibold rounded-e-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+            class="absolute right-0 top-0 bottom-0 px-8 py-6 bg-secondary-500 hover:bg-secondary-600 text-black font-semibold rounded-e-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
           >
             {isSubmitting ? 'Sending...' : isSuccess ? 'Subscribed!' : 'Subscribe'}
           </button>

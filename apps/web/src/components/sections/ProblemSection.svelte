@@ -37,7 +37,7 @@
             <div class="space-y-8">
               {#each sortedProblems as problem, index}
                 <div class="flex items-start gap-6 transition-all duration-700 {getItemClass(index)}">
-                  <div class="flex-shrink-0 w-20 h-20 rounded-xl bg-blue-500 flex items-center justify-center text-white shadow-md">
+                  <div class="flex-shrink-0 w-20 h-20 rounded-xl bg-secondary-500 flex items-center justify-center text-black shadow-md">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
                     </svg>

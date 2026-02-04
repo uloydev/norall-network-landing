@@ -7,10 +7,10 @@
   export let hero: Hero;
 
   const backgroundStyles = {
-    'gradient-blue': 'bg-gradient-to-br from-secondary-600 via-secondary-700 to-primary-800',
+    'gradient-blue': 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800',
     'gradient-dark': 'bg-gradient-to-br from-gray-800 via-gray-900 to-black',
     'solid-primary': 'bg-primary-500',
-    'solid-dark': 'bg-gray-900',
+    'solid-dark': 'bg-primary-500',
     image: '',
   };
 
@@ -129,12 +129,12 @@
   }
 </style>
 
-<section class="relative overflow-hidden min-h-screen bg-black pt-28" class:text-white={!isLight}>
+<section class="relative overflow-hidden min-h-screen bg-primary-500 pt-28" class:text-white={!isLight}>
   <!-- Animated Sphere Background -->
   <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
     <div 
-      class="animated-sphere absolute w-[150vh] h-[150vh] rounded-full blur-[250px] opacity-70 bottom-0 right-0"
-      style="background: radial-gradient(circle, #FFFFFF 0%, #48ffff 40%, #007bff 70%);"
+      class="animated-sphere absolute w-[150vh] h-[150vh] rounded-full blur-[250px] opacity-30 bottom-0 right-0"
+      style="background: radial-gradient(circle, #D7E81E 0%, #5F6E6B 40%, #0B3F3A 70%);"
     ></div>
   </div>
 
@@ -157,7 +157,7 @@
           </h1>
           <!-- Tags -->
           {#if hero.tags && hero.tags.length > 0}
-              <span class="text-xs font-light bg-white/25 px-6 md:px-8 py-1 rounded-full inline-block">{@html hero.tags.join(" &middot; ")}</span>
+              <span class="text-xs font-light bg-secondary-500 text-black px-6 md:px-8 py-1 rounded-full inline-block">{@html hero.tags.join(" &middot; ")}</span>
           {/if}
         </div>
         <div class="md:max-w-md lg:max-w-lg xl:max-w-full transition-all duration-700 {showRightContent ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}">
@@ -175,10 +175,10 @@
                 : ''}"
             >
               {#if hero.primaryCta}
-                <Button button={hero.primaryCta} size="sm" additionalClasses="border border-white rounded-full bg-white text-black px-8 md:px-12 hover:text-white hover:bg-primary-900 transition-all duration-500 text-sm md:text-base" />
+                <Button button={hero.primaryCta} size="sm" additionalClasses="border border-secondary-500 rounded-full bg-secondary-500 text-black px-8 md:px-12 hover:text-black hover:bg-secondary-600 transition-all duration-500 text-sm md:text-base" />
               {/if}
               {#if hero.secondaryCta}
-                <Button button={hero.secondaryCta} size="sm" additionalClasses="border border-white rounded-full bg-white text-black px-8 md:px-12 hover:text-white hover:bg-primary-900 transition-all duration-500 text-sm md:text-base" />
+                <Button button={hero.secondaryCta} size="sm" additionalClasses="border border-white rounded-full bg-transparent text-white px-8 md:px-12 hover:bg-white hover:text-primary-500 transition-all duration-500 text-sm md:text-base" />
               {/if}
             </div>
           {/if}
@@ -195,7 +195,7 @@
         >
           {#each hero.featureCards as card, index}
             <div
-              class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 md:p-8 hover:bg-white/15 transition-all duration-500 flex flex-col justify-center items-start gap-y-12 md:gap-y-20 {visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}"
+              class="bg-accent-500/20 backdrop-blur-lg border border-accent-300/30 rounded-2xl p-6 md:p-8 hover:bg-accent-500/30 hover:border-secondary-500/50 transition-all duration-500 flex flex-col justify-center items-start gap-y-12 md:gap-y-20 {visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}"
             >
               <h3 class="text-3xl sm:text-4xl md:text-5xl font-normal mb-2 text-white">
                 {card.title}

@@ -45,7 +45,7 @@
                   class="h-12 w-12 rounded-full object-cover"
                 />
               {:else}
-                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-primary-600 font-semibold">
+                <div class="flex h-12 w-12 items-center justify-center rounded-full bg-secondary-100 text-secondary-600 font-semibold">
                   {testimonial.name.charAt(0)}
                 </div>
               {/if}

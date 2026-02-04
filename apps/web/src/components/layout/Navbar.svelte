@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { slide } from 'svelte/transition';
   import { page } from '$app/stores';
   import Container from '$components/ui/Container.svelte';
   import logoImg from '$lib/assets/logo.png';
@@ -29,13 +30,13 @@
   };
 </script>
 
-<nav class="fixed top-0 z-50 w-full transition-all duration-500 {scrolled ? 'bg-secondary-500 shadow-lg' : 'bg-transparent'}">
+<nav class="fixed top-0 z-50 w-full transition-all duration-500 {scrolled || mobileMenuOpen ? 'bg-primary-500 shadow-lg' : 'bg-transparent'}">
   <Container maxWidth="tailwind">
-    <div class="flex items-center justify-between h-24">
+    <div class="flex items-center justify-between h-20 md:h-24">
       <!-- Logo -->
-      <a href="/" class="flex items-center space-x-3 group overflow-hidden">
-        <img src={logoImg} alt="Norall Logo" class="h-8 w-auto flex-shrink-0" />
-        <span class="text-xl font-medium text-white whitespace-nowrap {scrolled ? 'max-w-xs' : 'max-w-0'} group-hover:max-w-xs transition-all duration-500 ease-in-out overflow-hidden">Norall Network</span>
+      <a href="/" class="flex items-center space-x-2 md:space-x-3 group overflow-hidden" on:click={() => mobileMenuOpen = false}>
+        <img src={logoImg} alt="Norall Logo" class="h-6 md:h-8 w-auto flex-shrink-0" />
+        <span class="text-base md:text-xl font-medium text-white whitespace-nowrap {scrolled ? 'max-w-xs' : 'max-w-0'} group-hover:max-w-xs transition-all duration-500 ease-in-out overflow-hidden">Norall Network</span>
       </a>
 
       <!-- Desktop Navigation -->
@@ -54,10 +55,10 @@
         </a>
       </div>
       
-      <div class="flex items-center justify-center">
+      <div class="hidden md:flex items-center justify-center">
         <a 
           href="#contact" 
-          class="px-12 py-2 border border-white bg-white text-black rounded-full hover:bg-primary-900 hover:text-white transition-all duration-500 text-sm"
+          class="px-12 py-2 border border-white bg-white text-black rounded-full hover:bg-secondary-500 hover:text-black transition-all duration-500 text-sm"
         >
           Contact Us
         </a>
@@ -81,15 +82,15 @@
 
     <!-- Mobile Menu -->
     {#if mobileMenuOpen}
-      <div class="md:hidden py-4 border-t border-white/20">
+      <div class="md:hidden py-4 border-t border-white/20" transition:slide={{ duration: 300 }}>
         <div class="flex flex-col space-y-4">
-          <a href="#about" class="text-white transition-all hover:font-bold duration-300">About</a>
-          <a href="#technology" class="text-white transition-all hover:font-bold duration-300">Technology</a>
-          <a href="#solution" class="text-white transition-all hover:font-bold duration-300">Solution</a>
-          <a href="#contact" class="text-white transition-all hover:font-bold duration-300">Contact</a>
+          <a href="/" class="text-white transition-all hover:font-bold duration-300 {isActive('/') ? 'font-bold' : ''}" on:click={() => mobileMenuOpen = false}>Home</a>
+          <a href="/about" class="text-white transition-all hover:font-bold duration-300 {isActive('/about') ? 'font-bold' : ''}" on:click={() => mobileMenuOpen = false}>About Us</a>
+          <a href="/services" class="text-white transition-all hover:font-bold duration-300 {isActive('/services') ? 'font-bold' : ''}" on:click={() => mobileMenuOpen = false}>Our Services</a>
           <a 
             href="#contact" 
-            class="px-12 py-2 border border-white bg-white text-black rounded-full hover:bg-primary-900 hover:text-white transition-all duration-500 text-sm text-center"
+            class="px-12 py-2 border border-white bg-white text-black rounded-full hover:bg-secondary-500 hover:text-black transition-all duration-500 text-sm text-center"
+            on:click={() => mobileMenuOpen = false}
           >
             Contact Us
           </a>

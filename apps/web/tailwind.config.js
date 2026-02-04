@@ -4,63 +4,63 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Dark navy blue - primary brand color
+        // Primary / Main Color - Dark teal/green #0B3F3A
         primary: {
-          50: '#e8f0f5',
-          100: '#d1e1eb',
-          200: '#a3c3d7',
-          300: '#75a5c3',
-          400: '#4787af',
-          500: '#1a4d7a',  // Base from palette
-          600: '#153e62',
-          700: '#102f49',
-          800: '#0b2031',
-          900: '#061018',
-          950: '#03080c',
+          50: '#e9f2f1',
+          100: '#d3e5e4',
+          200: '#a7cbc9',
+          300: '#7bb1ae',
+          400: '#4f9793',
+          500: '#0B3F3A',  // Base brand color
+          600: '#093632',
+          700: '#072c29',
+          800: '#052321',
+          900: '#031918',
+          950: '#020f0e',
         },
-        // Medium blue - secondary brand color
+        // Highlight / Accent Color - Bright yellow-green #D7E81E
         secondary: {
-          50: '#f0f7fb',
-          100: '#e1eff7',
-          200: '#c3dfef',
-          300: '#a5cfe7',
-          400: '#87bfdf',
-          500: '#5b9bd5',  // Base from palette
-          600: '#4980b8',
-          700: '#37648a',
-          800: '#25485c',
-          900: '#132c2e',
-          950: '#091617',
+          50: '#fefef7',
+          100: '#fcfcef',
+          200: '#f9f9df',
+          300: '#f6f6cf',
+          400: '#f3f3bf',
+          500: '#D7E81E',  // Base accent color
+          600: '#c5d31b',
+          700: '#b3be18',
+          800: '#a1a915',
+          900: '#8f9412',
+          950: '#7d7f0f',
         },
-        // Light blue - accent/info color
+        // Secondary / Neutral Color - Gray-green #5F6E6B
         accent: {
-          50: '#fbfdfe',
-          100: '#f7fbfd',
-          200: '#eff7fb',
-          300: '#e7f3f9',
-          400: '#dfeff7',
-          500: '#b8d8e8',  // Base from palette
-          600: '#93c2d9',
-          700: '#6eacca',
-          800: '#4996bb',
-          900: '#2480ac',
-          950: '#1e6a8d',
+          50: '#f2f4f3',
+          100: '#e5e8e7',
+          200: '#cbd1cf',
+          300: '#b1bab7',
+          400: '#97a39f',
+          500: '#5F6E6B',  // Base neutral color
+          600: '#4c5856',
+          700: '#394241',
+          800: '#262c2b',
+          900: '#131616',
+          950: '#0a0b0b',
         },
-        // Off-white/light background
+        // Background Color - Light beige #ECE9E7
         background: {
           50: '#ffffff',
           100: '#fefefe',
-          200: '#fdfdfd',
-          300: '#fbfcfc',
-          400: '#f9fafb',
-          500: '#f0f4f8',  // Base from palette
-          600: '#e1e8ef',
-          700: '#d2dce6',
-          800: '#c3d0dd',
-          900: '#b4c4d4',
-          950: '#a5b8cb',
+          200: '#f9f7f6',
+          300: '#f5f2f0',
+          400: '#f0edeb',
+          500: '#ECE9E7',  // Base background color
+          600: '#d4d1cf',
+          700: '#bcb9b7',
+          800: '#a4a19f',
+          900: '#8c8987',
+          950: '#74716f',
         },
-        // Avatar/profile accent (pink/magenta)
+        // Profile/Avatar accent (keep for consistency)
         profile: {
           50: '#fef1f9',
           100: '#fde3f3',

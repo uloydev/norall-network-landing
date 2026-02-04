@@ -59,15 +59,15 @@
 
       <!-- Right Side - Form -->
       <ScrollReveal animation="fade-right" duration="700" delay="200">
-        <div class="bg-white rounded-3xl shadow-xl p-10 md:p-12">
+        <div class="bg-primary-500 rounded-3xl shadow-xl p-10 md:p-12">
         {#if isSuccess}
           <div class="text-center py-8">
-            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-16 h-16 bg-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg class="w-8 h-8 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>
-            <p class="text-lg text-gray-700">
+            <p class="text-lg text-white">
               {section.successMessage || 'Thank you for your message. We\'ll get back to you soon!'}
             </p>
           </div>
@@ -79,14 +79,14 @@
                 bind:value={formData.fullName}
                 placeholder="Full name"
                 required
-                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+                class="w-full pb-3 border-0 border-b-2 border-white/30 focus:border-secondary-500 outline-none transition-colors text-white placeholder-white/60 bg-transparent"
               />
               <input
                 type="email"
                 bind:value={formData.email}
                 placeholder="Email"
                 required
-                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+                class="w-full pb-3 border-0 border-b-2 border-white/30 focus:border-secondary-500 outline-none transition-colors text-white placeholder-white/60 bg-transparent"
               />
             </div>
 
@@ -95,13 +95,13 @@
                 type="tel"
                 bind:value={formData.telephone}
                 placeholder="Telephone"
-                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+                class="w-full pb-3 border-0 border-b-2 border-white/30 focus:border-secondary-500 outline-none transition-colors text-white placeholder-white/60 bg-transparent"
               />
               <input
                 type="text"
                 bind:value={formData.service}
                 placeholder="Service"
-                class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400"
+                class="w-full pb-3 border-0 border-b-2 border-white/30 focus:border-secondary-500 outline-none transition-colors text-white placeholder-white/60 bg-transparent"
               />
             </div>
 
@@ -110,17 +110,17 @@
               placeholder="Message"
               rows="4"
               required
-              class="w-full pb-3 border-0 border-b-2 border-gray-500 focus:border-secondary-600 outline-none transition-colors text-gray-700 placeholder-gray-400 resize-none"
+              class="w-full pb-3 border-0 border-b-2 border-white/30 focus:border-secondary-500 outline-none transition-colors text-white placeholder-white/60 resize-none bg-transparent"
             ></textarea>
 
             {#if error}
-              <p class="text-red-600 text-sm">{error}</p>
+              <p class="text-red-300 text-sm">{error}</p>
             {/if}
 
             <button
               type="submit"
               disabled={isSubmitting}
-              class="w-full bg-primary-700 hover:bg-secondary-950 text-white font-semibold py-6 px-8 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+              class="w-full bg-secondary-500 hover:bg-secondary-600 text-black font-semibold py-6 px-8 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-lg"
             >
               {isSubmitting ? 'Sending...' : (section.submitButtonText || 'Get Started')}
             </button>
